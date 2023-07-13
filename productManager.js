@@ -1,13 +1,13 @@
-class TicketManager {
-    products;
+ export class ProductManager {
 
-    constructor (products){
+    constructor (path){
+        this.path = path
         this.products = [];
     }
     
     static correlativoId = 0;
 
-    addProduct(title, description, price, thumbnail, code, stock){
+    async addProduct(title, description, price, thumbnail, code, stock){
         
         if(title == undefined || description== undefined || price == undefined || thumbnail == undefined || code == undefined|| stock == undefined){
             throw new Error( "todos los campos son obligatorios")
@@ -17,9 +17,9 @@ class TicketManager {
          if(codeExists){
             throw  new Error("el codigo ya existe")
         }else{
-            TicketManager.correlativoId++;
+            ProductManager.correlativoId++;
             const newProduct = {
-                id: TicketManager.correlativoId,
+                id: ProductManager.correlativoId,
                 title,
                 description,
                 price,
@@ -46,17 +46,7 @@ class TicketManager {
 
 }
 
- myFirtsProduct = new TicketManager();
-
-myFirtsProduct.addProduct(
-    "producto de prueba",
-    "este es un producto de prueba",
-    200,
-    "sin imagen",
-    "abc123",
-    25,
-);
 
 
-console.log("desde getProducts", myFirtsProduct.getProducts());
-console.log("desde getProductById", myFirtsProduct.getProductById(1));
+ 
+
